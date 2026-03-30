@@ -28,14 +28,14 @@ The system also allows users to choose a genre manually, making it more interact
 ---
 
 ## 🔄 Working of the System
-1. The user enters their mood (happy, sad, bored, or stressed).  
+1. The user selects their mood (happy, sad, bored, or stressed).  
 2. The system retrieves relevant genres using Prolog rules.  
 3. The user selects a preferred genre from the list.  
 4. The system randomly suggests:
    - A movie  
    - A song  
    - An aesthetic description  
-5. The results are displayed to the user in a clean format.
+5. The results are displayed to the user in a clean, visually appealing format, with dynamic background colors based on the genre.
 
 ---
 
@@ -51,9 +51,10 @@ The system also allows users to choose a genre manually, making it more interact
 - Learned the basics of logic programming using Prolog  
 - Understood how AI can be used for recommendation systems  
 - Improved Python programming and debugging skills  
-- Gained experience in integrating multiple technologies  
+- Gained experience in integrating multiple technologies
+- Learned to manage user interface and dynamic content display
 
 ---
 
 ## 🎯 Conclusion
-MoodFlix successfully demonstrates how AI concepts like knowledge representation and reasoning can be applied to solve real-life problems. The project is simple, interactive, and useful, making it a practical example of an AI-based recommendation system.
+MoodFlix successfully demonstrates how AI concepts like knowledge representation and reasoning can be applied to solve real-life entertainment problems. The project is simple, interactive, and useful, making it a practical example of an AI-based recommendation system.
