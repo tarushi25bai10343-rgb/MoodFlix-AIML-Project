@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MoodFlix 🎬</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            transition: 0.5s;
+            color: white;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            margin: auto;
+            padding: 20px;
+            width: 320px;
+            border-radius: 15px;
+            background: rgba(0,0,0,0.6);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            padding: 10px 15px;
+            margin: 8px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .happy { background: #ff9a9e; }
+        .sad { background: #6a85b6; }
+        .bored { background: #f7971e; }
+        .stressed { background: #232526; color: white; }
+
+    </style>
+</head>
+
+<body style="
+{% if genre == 'comedy' %}background: linear-gradient(to right, #ff9a9e, #fad0c4);
+{% elif genre == 'romance' %}background: linear-gradient(to right, #ff758c, #ff7eb3);
+{% elif genre == 'action' %}background: linear-gradient(to right, #232526, #414345);
+{% elif genre == 'thriller' %}background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+{% elif genre == 'motivational' %}background: linear-gradient(to right, #f7971e, #ffd200);
+{% elif genre == 'adventure' %}background: linear-gradient(to right, #56ab2f, #a8e063);
+{% else %}background: #222;
+{% endif %}
+">
+
+<div class="container">
+
+    <h1>🎬 MoodFlix AI</h1>
+
+    <form method="POST">
+    {% if not genres %}
+        <!-- Mood selection buttons -->
+        <button name="mood" value="happy" class="btn happy">😊 Happy</button>
+        <button name="mood" value="sad" class="btn sad">😢 Sad</button>
+        <button name="mood" value="bored" class="btn bored">😴 Bored</button>
+        <button name="mood" value="stressed" class="btn stressed">😖 Stressed</button>
+    {% elif genres and not genre %}
+        <!-- Genre selection dropdown -->
+        <input type="hidden" name="mood" value="{{ mood }}">
+        <h2>Select your genre 🎭</h2>
+        <select name="genre">
+            {% for g in genres %}
+                <option value="{{ g }}">{{ g.capitalize() }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit" class="btn happy">Get Recommendation</button>
+    {% else %}
+        <!-- Movie recommendation card -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='posters/' + poster) }}" 
+                 width="200" style="border-radius:10px;">
+            <h2>{{ movie }}</h2>
+            <p><b>Genre:</b> {{ genre }}</p>
+            <p>🎵 {{ song }}</p>
+            <p>🎨 {{ aesthetic }}</p>
+        </div>
+    {% endif %}
+</form>
+
+<h2>Select your mood 👇</h2>
+    {% if movie %}
+    <div class="card">
+
+        <img src="{{ url_for('static', filename='posters/' + poster) }}" 
+             width="200" style="border-radius:10px;">
+
+        <h2>{{ movie }}</h2>
+        <p><b>Genre:</b> {{ genre }}</p>
+        <p>🎵 {{ song }}</p>
+        <p>🎨 {{ aesthetic }}</p>
+
+    </div>
+    {% else %}
+    <p
+    style="margin-top:20px;">Choose a mood to get recommendations 🎬</p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
